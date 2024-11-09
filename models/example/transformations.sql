@@ -3,7 +3,7 @@ WITH initial_ranking AS (
     SELECT 
         *,
         ROW_NUMBER() OVER (PARTITION BY channel_id ORDER BY total_views DESC) AS row_num
-    FROM {{ source('youtube_data', 'pubtogcs') }}
+    FROM {{ source('youtube_data', 'raw_data') }}
 ),
 filtered_data AS (
     SELECT 
